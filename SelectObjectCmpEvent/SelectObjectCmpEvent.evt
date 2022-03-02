@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="SelectObjectCmpEvent">
+    <aura:attribute type="String" name="objectApi"/>
+</aura:event>

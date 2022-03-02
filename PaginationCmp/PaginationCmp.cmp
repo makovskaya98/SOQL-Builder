@@ -1,0 +1,16 @@
+<aura:component description="PaginationCmp">
+    <aura:attribute name="options" type="List" access="PRIVATE"/>
+    <aura:attribute name="selectedValue" type="String" access="PRIVATE"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:registerEvent name="cmpEvent" type="c:PaginationEvent"/>
+
+    <lightning:select name="pageSize"
+                      label="Show by: "
+                      aura:id="pageSize"
+                      value="{!v.selectedValue}"
+                      onchange="{!c.onChange}">
+        <aura:iteration items="{!v.options}" var="option">
+            <option value="{!option.label}" selected="{!option.selected}">{!option.label}</option>
+        </aura:iteration>
+    </lightning:select>
+</aura:component>

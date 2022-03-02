@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="SelectSortNULLSCmpEvent">
+    <aura:attribute type="String" name="sortNULLSData"/>
+</aura:event>

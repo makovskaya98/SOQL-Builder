@@ -1,0 +1,123 @@
+<aura:component description="SOQLBuilderCmp"
+                controller="SOQLBuilderController"
+                implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="query" type="String"/>
+    <aura:attribute name="isMatches" type="Boolean"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedObj" type="String"/>
+    <aura:attribute name="selectedFields" type="String"/>
+    <aura:attribute name="selectedSortField" type="String"/>
+    <aura:attribute name="selectedFilterField" type="String"/>
+    <aura:attribute name="selectedSortData" type="String"/>
+    <aura:attribute name="selectedSortNullsData" type="String"/>
+    <aura:attribute name="condition" type="String"/>
+    <aura:attribute name="limit" type="Integer"/>
+    <aura:attribute name="value" type="String"/>
+    <aura:attribute name="pageSize" type="Integer" default="5"/>
+    <aura:attribute name="numPage" type="Integer"/>
+    <aura:attribute name="paginationListCount" type="Integer"/>
+    <aura:attribute name="pagination" type="List"/>
+    <aura:attribute name="fieldNames" type="List"/>
+    <aura:handler name="cmpEvent"
+                  event="c:PaginationEvent"
+                  action="{!c.handlePagination}"/>
+    <aura:handler name="cmpEventValue"
+                  event="c:ValueCmpEvent"
+                  action="{!c.handleValueCmpEvent}"/>
+    <aura:handler name="cmpEventLimit"
+                  event="c:LimitCmpEvent"
+                  action="{!c.handleLimitCmpEvent}"/>
+    <aura:handler name="cmpEventSelectObj"
+                  event="c:SelectObjectCmpEvent"
+                  action="{!c.handleSelectObjectCmpEvent}"/>
+    <aura:handler name="cmpEventSelectFields"
+                  event="c:MultipleObjectCmpEvent"
+                  action="{!c.handleSelectFieldsCmpEvent}"/>
+    <aura:handler name="cmpEventSelectField"
+                  event="c:SelectFieldCmpEvent"
+                  action="{!c.handleSelectSortFieldCmpEvent}"/>
+    <aura:handler name="cmpEventSelectFilterField"
+                  event="c:SelectFilterFieldCmpEvent"
+                  action="{!c.handleSelectFilterFieldCmpEvent}"/>
+    <aura:handler name="cmpEventSelectSort"
+                  event="c:SelectSortCmpEvent"
+                  action="{!c.handleSelectSortDataCmpEvent}"/>
+    <aura:handler name="cmpEventSelectSortNULLS"
+                  event="c:SelectSortNULLSCmpEvent"
+                  action="{!c.handleSelectSortNullsDataCmpEvent}"/>
+    <aura:handler name="cmpCondition"
+                  event="c:SelectConditionCmpEvent"
+                  action="{!c.handleConditionCmpEvent}"/>
+
+    <div class="main-container slds-color__background_gray-1">
+        <div class="slds-large-size_1-of-5">
+            <c:SelectObjectCmp/>
+            <c:MultipleObjectCmp fieldNames="{!v.fieldNames}" selectedObj="{!v.selectedObj}"/>
+        </div>
+        <div>
+            <div class="first-column">
+                <div class="slds-large-size_1-of-2">
+                    <c:SortSelectFieldCmp fieldNames="{!v.fieldNames}" selectedObj="{!v.selectedObj}"/>
+                </div>
+                <div class="slds-large-size_1-of-5">
+                    <c:SelectSortCmp/>
+                </div>
+                <div class="slds-large-size_1-of-5">
+                    <c:SelectSortNULLSCmp/>
+                </div>
+                <div class="slds-large-size_1-of-2">
+                    <c:LimitCmp limit="{!v.limit}"/>
+                </div>
+            </div>
+            <div class="second-column">
+                <div class="slds-large-size_1-of-2">
+                    <c:FilterSelectFieldCmp fieldNames="{!v.fieldNames}" selectedObj="{!v.selectedObj}"/>
+                </div>
+                <div class="slds-large-size_1-of-5">
+                    <c:SelectConditionCmp value="{!v.value}"/>
+                </div>
+                <div class="slds-large-size_2-of-3">
+                    <c:ValueCmp value="{!v.value}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <c:TextAreaSOQLCmp selectedObj="{!v.selectedObj}" query="{!v.query}" selectedFields="{!v.selectedFields}"/>
+    <div class="slds-color__background_gray-1">
+        <lightning:button variant="brand" label="Query" title="Query" onclick="{!c.handleClick}"
+                          class="slds-m-left_x-small"/>
+    </div>
+    <div class="main-pagination slds-color__background_gray-1">
+
+        <aura:if isTrue="{!v.data.length > 0}">
+            <div class="pagination">
+                <div class="slds-large-size_1-of-5">
+                    <c:PaginationCmp/>
+                </div>
+                <div>
+                    <lightning:datatable keyField="id"
+                                         data="{! v.data }"
+                                         columns="{! v.columns }"
+                                         hideCheckboxColumn="true"/>
+                </div>
+                <div class="slds-large-size_1-of-5">
+                    <ul class="pagination-item">
+                        <li onclick="{!c.prevPage}" class="pagination-item--prev">
+                            Prev
+                        </li>
+                        <aura:iteration items="{!v.pagination}" var="item">
+                            <li id="pagin-num" data-value="{!item}" onclick="{!c.getNumber}">
+                                {!item}
+                            </li>
+                        </aura:iteration>
+                        <li onclick="{!c.nextPage}" class="pagination-item--prev">
+                            Next
+                        </li>
+                    </ul>
+                    <p>Page {!v.numPage} of {!v.pagination.length}</p>
+                </div>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

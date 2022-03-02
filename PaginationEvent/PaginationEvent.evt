@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="PaginationEvent">
+    <aura:attribute type="Integer" name="numberOfEntries"/>
+</aura:event>

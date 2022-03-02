@@ -1,0 +1,12 @@
+<aura:component description="SelectSortCmp">
+    <aura:attribute name="options" type="List" access="PRIVATE"/>
+    <aura:attribute name="selectedValue" type="String" access="PRIVATE"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:registerEvent name="cmpEventSelectSort" type="c:SelectSortCmpEvent"/>
+
+    <lightning:select name="select" label="" aura:id="selectSort" value="{!v.selectedValue}" onchange="{! c.onChange }">
+        <aura:iteration items="{!v.options}" var="option">
+            <option value="{!option.value}" selected="{!option.selected}">{!option.label}</option>
+        </aura:iteration>
+    </lightning:select>
+</aura:component>

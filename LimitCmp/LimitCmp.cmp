@@ -1,0 +1,6 @@
+<aura:component description="LimitCmp">
+    <aura:attribute name="limit" type="Integer"/>
+    <aura:registerEvent name="cmpEventLimit" type="c:LimitCmpEvent"/>
+
+    <lightning:input aura:id="limit" name="input" label="Max Records:" maxlength="10" onchange="{!c.onChange}"/>
+</aura:component>

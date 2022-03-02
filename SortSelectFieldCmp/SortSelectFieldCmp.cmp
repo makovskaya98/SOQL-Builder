@@ -1,0 +1,11 @@
+<aura:component description="SortSelectFieldCmp" controller="SOQLBuilderController">
+    <aura:attribute name="fieldNames" type="List"/>
+    <aura:attribute name="selectedObj" type="String"/>
+    <aura:registerEvent name="cmpEventSelectField" type="c:SelectFieldCmpEvent"/>
+
+    <lightning:select aura:id="selectField" name="select" label="Sort result by:" onchange="{!c.onChange}">
+        <aura:iteration items="{!v.fieldNames}" var="fieldName">
+            <option value="{!fieldName}">{!fieldName}</option>
+        </aura:iteration>
+    </lightning:select>
+</aura:component>

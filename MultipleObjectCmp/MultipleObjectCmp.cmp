@@ -1,0 +1,18 @@
+<aura:component description="MultipleObjectCmp" controller="SOQLBuilderController">
+    <aura:attribute name="fieldNames" type="List"/>
+    <aura:attribute name="selectedObj" type="String"/>
+    <aura:handler name="change" value="{!v.selectedObj}" action="{!c.selectedObjChange}"/>
+    <aura:registerEvent name="cmpEventSelectFields" type="c:MultipleObjectCmpEvent"/>
+
+    <div class="row">
+        <p class="title">Fields:</p>
+        <ui:inputSelect multiple="true"
+                        class="multiple"
+                        aura:id="InputSelectMultiple"
+                        change="{!c.onMultiSelectChange}">
+            <aura:iteration items="{!v.fieldNames}" var="record">
+                <ui:inputSelectOption text="{!record}"/>
+            </aura:iteration>
+        </ui:inputSelect>
+    </div>
+</aura:component>

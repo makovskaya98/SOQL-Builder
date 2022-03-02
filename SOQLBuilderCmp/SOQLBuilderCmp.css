@@ -1,0 +1,54 @@
+.THIS.main-container.slds-color__background_gray-1.cSOQLBuilderCmp {
+    display: flex;
+    padding: 20px;
+}
+
+.THIS .first-column {
+    display: flex;
+    padding: 10px;
+}
+
+.THIS .second-column {
+    display: flex;
+    padding: 0 20px;
+}
+
+.THIS .first-column .slds-large-size_1-of-2 {
+    padding: 0 10px;
+}
+
+.THIS .first-column .slds-large-size_1-of-5 {
+    padding: 0 10px;
+}
+
+.THIS.main-pagination.slds-color__background_gray-1.cSOQLBuilderCmp {
+    padding: 20px;
+}
+
+.THIS .pagination {
+    display: flex;
+    flex-direction: column
+}
+
+.THIS ul.pagination-item {
+    display: flex;
+    padding: 20px 0;
+}
+
+.THIS li.pagination-item--prev {
+    padding: 7px 12px;
+    background: #0176d3;
+    margin: 2px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.THIS li#pagin-num {
+    padding: 7px 12px;
+    background: #0176d3;
+    margin: 2px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}

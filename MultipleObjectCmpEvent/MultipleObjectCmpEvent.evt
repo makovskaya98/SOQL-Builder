@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="MultipleObjectCmpEvent">
+    <aura:attribute type="List" name="fieldsList"/>
+</aura:event>

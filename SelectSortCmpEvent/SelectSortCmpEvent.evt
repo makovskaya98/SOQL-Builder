@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="SelectSortCmpEvent">
+    <aura:attribute type="String" name="sortData"/>
+</aura:event>

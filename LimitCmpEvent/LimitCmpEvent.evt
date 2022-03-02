@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="LimitCmpEvent">
+    <aura:attribute type="Integer" name="limit"/>
+</aura:event>

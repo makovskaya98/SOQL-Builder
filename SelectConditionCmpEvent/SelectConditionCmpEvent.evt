@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="SelectConditionCmpEvent">
+    <aura:attribute type="String" name="condition"/>
+</aura:event>

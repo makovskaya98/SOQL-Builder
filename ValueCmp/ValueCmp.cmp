@@ -1,0 +1,6 @@
+<aura:component description="ValueCmp">
+    <aura:attribute name="value" type="String"/>
+    <aura:registerEvent name="cmpEventValue" type="c:ValueCmpEvent"/>
+
+    <lightning:input aura:id="value" name="input" label="" onchange="{!c.onChange}"/>
+</aura:component>
